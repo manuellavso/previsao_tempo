@@ -627,12 +627,8 @@ body.modo-noite .privacy-message {
     body {
         width: 100%;
         min-height: 100dvh;
-
-        padding: 0;
-
-        overflow-x: hidden;
-
-        align-items: flex-start;
+        padding: var(--shadow-sm);
+        align-items: center;
     }
 
     .container {
