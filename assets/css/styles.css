@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+
+/* Variáveis */
+:root {
+
+    /* Paleta de Cores - Azul */
+    --blue-50: #eaf7ff;
+    --blue-100: #d8f0ff;
+    --blue-200: #b9e4ff;
+    --blue-300: #8ed3ff;
+    --blue-400: #5bbdf5;
+    --blue-500: #319ed8;
+    --blue-600: #2583b5;
+    --blue-700: #1d688f;
+    --blue-800: #185472;
+    --blue-900: #123d52;
+    --blue-950: #0b2633;
+
+    /* Cores Neutras */
+    --gray-100: #f5f7f8;
+    --gray-200: #e8ecef;
+    --gray-300: #d4dadd;
+    --gray-400: #6b747c;
+    --gray-500: #505861;
+    --black: #171717;
+    --white: #ffffff;
+
+    /* Cores de Estado */
+    --error: #e63946;
+    --success: #4caf50;
+
+    /* Sombras */
+    --shadow-sm: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 0.25rem 0.75rem rgba(31, 126, 173, 0.2);
+    --shadow-lg: 0 0.5rem 1.5rem rgba(31, 126, 173, 0.15);
+
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Tamanhos de Fonte */
+    --text-sm: 0.75rem;
+    --text-base: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.5rem;
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 2rem;
+    --radius-full: 50%;
+
+    /* Animação Padrão */
+    --transition-default: all 0.3s ease;
+}
+
+
+/* Configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background-color: var(--blue-100);
+
+    font-family: 'Nunito', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--spacing-lg);
+
+    transition: var(--transition-default);
+}
+
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+/* Conteúdo principal */
+.content {
+    min-height: 600px;
+
+    background-color: var(--white);
+
+    border-radius: var(--radius-xl);
+
+    padding: var(--spacing-2xl);
+
+    box-shadow: var(--shadow-lg);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: var(--transition-default);
+}
+
+
+/* Header */
+.header {
+    text-align: center;
+
+    margin-bottom: var(--spacing-lg);
+}
+
+.header h1 {
+    color: var(--blue-700);
+
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+}
+
+.header p {
+    color: var(--gray-500);
+
+    font-size: var(--text-lg);
+}
+
+
+
+/* Área de pesquisa */
+.search {
+    width: 100%;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.search label {
+    color: var(--black);
+
+    font-size: var(--text-base);
+
+    font-weight: bold;
+
+    margin-bottom: var(--spacing-xs);
+}
+
+
+/* Input */
+.search input {
+    width: 100%;
+
+    padding: var(--spacing-sm);
+
+    border: 1px solid var(--gray-300);
+
+    border-radius: var(--radius-md);
+
+    background-color: var(--white);
+
+    color: var(--black);
+
+    font-size: var(--text-base);
+
+    outline: none;
+
+    margin-bottom: var(--spacing-sm);
+
+    transition: var(--transition-default);
+}
+
+.search input:focus {
+    border-color: var(--blue-500);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+
+/* Botão */
+.search button {
+    width: 100%;
+
+    padding: var(--spacing-sm);
+
+    border: none;
+
+    border-radius: var(--radius-md);
+
+    background-color: var(--blue-600);
+
+    color: var(--white);
+
+    font-size: var(--text-base);
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: var(--transition-default);
+}
+
+.search button:hover {
+    background-color: var(--blue-700);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.search button:active {
+    transform: translateY(0);
+}
+
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    .content {
+        min-height: 500px;
+
+        padding: var(--spacing-xl) var(--spacing-md);
+
+        border-radius: var(--radius-lg);
+    }
+
+    .header h1 {
+        font-size: var(--text-2xl);
+    }
+
+    .header p {
+        font-size: var(--text-base);
+    }
+
+    .search {
+        max-width: 100%;
+    }
+}
