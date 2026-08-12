@@ -54,7 +54,7 @@ Responsável por retornar os dados meteorológicos da localização encontrada.
 1. Clone o repositório
 
 ```
-git clone URL_DO_SEU_REPOSITORIO
+git clone https://github.com/manuellavso/previsao_tempo.git
 ```
 
 2. Acesse a pasta do projeto
