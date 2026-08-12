@@ -20,63 +20,236 @@
 
     <main class="container">
 
-        <section class="content">
+        <!-- Tela inicial -->
+        <section class="search-container">
 
-            <!-- Página Inicial -->
-            <div class="header">
+            <div class="search-content">
 
                 <h1>🌤️ Previsão do Tempo</h1>
 
                 <p>
-                    Consulte a previsão do tempo da sua cidade
+                    Descubra como está o tempo na sua cidade.
                 </p>
 
-            </div>
+                <div class="search-box">
 
+                    <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Digite o nome da cidade"
+                    >
 
-            <!-- Busca da cidade -->
-            <div class="search">
+                    <button id="btn-previsao">
+                        Ver previsão
+                    </button>
 
-                <label for="cidade">
-                    Digite sua cidade:
-                </label>
-
-                <input
-                    type="text"
-                    id="cidade"
-                    placeholder="Ex: São Paulo"
-                >
-
-                <button type="button">
-                    Ver previsão
-                </button>
-
-            </div>
-
-
-            <!-- Temperatura atual -->
-            <div class="weather">
-
-                <h2>São Paulo</h2>
-
-                <div class="temperature">
-                    <span>☀️</span>
-                    <strong>24°C</strong>
                 </div>
 
-                <p class="weather-description">
-                    Ensolarado
-                </p>
+                <p class="error-message"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Tela de previsão -->
+        <section class="weather-container">
+
+            <!-- Cabeçalho da previsão -->
+            <div class="weather-header">
+
+                <button
+                    id="btn-voltar"
+                    class="btn-voltar"
+                >
+                    ← Nova pesquisa
+                </button>
+
+                <div class="location">
+
+                    <h2 id="nome-cidade">
+                        São Paulo
+                    </h2>
+
+                    <p id="data-atual">
+                        Hoje
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <!-- Cidade não encontrada -->
-            <div class="error-message">
+            <!-- Conteúdo principal -->
+            <div class="weather-content">
 
-                <p>
-                    Cidade não encontrada. Tente novamente.
-                </p>
+                <!-- Clima atual -->
+                <div class="current-weather">
+
+                    <div class="current-weather-info">
+
+                        <span
+                            id="icone-clima"
+                            class="weather-icon"
+                        >
+                            ☀️
+                        </span>
+
+                        <div>
+
+                            <h3 id="temperatura">
+                                24°C
+                            </h3>
+
+                            <p id="descricao-clima">
+                                Ensolarado
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Informações adicionais -->
+                <div class="weather-details">
+
+                    <div class="weather-card">
+
+                        <span>💨</span>
+
+                        <div>
+                            <p>Vento</p>
+                            <strong id="vento">
+                                -- km/h
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-card">
+
+                        <span>💧</span>
+
+                        <div>
+                            <p>Umidade</p>
+                            <strong id="umidade">
+                                --%
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-card">
+
+                        <span>👁️</span>
+
+                        <div>
+                            <p>Visibilidade</p>
+                            <strong id="visibilidade">
+                                -- km
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="weather-card">
+
+                        <span>🌡️</span>
+
+                        <div>
+                            <p>Pressão</p>
+                            <strong id="pressao">
+                                -- hPa
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Previsão dos próximos dias -->
+            <div class="forecast-section">
+
+                <h3>Próximos dias</h3>
+
+                <div
+                    id="forecast-list"
+                    class="forecast-list"
+                >
+
+                    <div class="forecast-card">
+
+                        <p>Hoje</p>
+
+                        <span>☀️</span>
+
+                        <strong>27°C</strong>
+
+                        <small>18°C</small>
+
+                    </div>
+
+
+                    <div class="forecast-card">
+
+                        <p>Amanhã</p>
+
+                        <span>🌤️</span>
+
+                        <strong>25°C</strong>
+
+                        <small>17°C</small>
+
+                    </div>
+
+
+                    <div class="forecast-card">
+
+                        <p>Sexta</p>
+
+                        <span>☁️</span>
+
+                        <strong>24°C</strong>
+
+                        <small>16°C</small>
+
+                    </div>
+
+
+                    <div class="forecast-card">
+
+                        <p>Sábado</p>
+
+                        <span>🌧️</span>
+
+                        <strong>22°C</strong>
+
+                        <small>15°C</small>
+
+                    </div>
+
+
+                    <div class="forecast-card">
+
+                        <p>Domingo</p>
+
+                        <span>☀️</span>
+
+                        <strong>26°C</strong>
+
+                        <small>18°C</small>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -84,7 +257,6 @@
 
     </main>
 
-      <!-- Script Principal da página -->
     <script src="./assets/js/script.js"></script>
 
 </body>
