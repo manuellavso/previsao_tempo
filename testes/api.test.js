@@ -1,4 +1,82 @@
-const { buscarLocalizacao, buscarPrevisao } = require("../api");
+const {
+    buscarLocalizacao,
+    buscarPrevisao
+} = require("../api");
+
+
+describe("buscarLocalizacao", () => {
+
+    beforeEach(() => {
+        global.fetch = jest.fn();
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+
+    test("deve ser uma função", () => {
+
+        expect(typeof buscarLocalizacao).toBe("function");
+
+    });
+
+
+    test("cidade válida retorna dados de localização", async () => {
+
+        fetch.mockResolvedValue({
+            ok: true,
+            json: async () => ({
+                results: [
+                    {
+                        name: "São Paulo",
+                        latitude: -23.5475,
+                        longitude: -46.63611
+                    }
+                ]
+            })
+        });
+
+        const resultado = await buscarLocalizacao("São Paulo");
+
+        expect(resultado).toBeDefined();
+
+        expect(resultado.name).toBe("São Paulo");
+
+        expect(resultado.latitude).toBe(-23.5475);
+
+        expect(resultado.longitude).toBe(-46.63611);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+    });
+
+
+    test("cidade inexistente lança exceção", async () => {
+
+        fetch.mockResolvedValue({
+            ok: true,
+            json: async () => ({
+                results: []
+            })
+        });
+
+        await expect(
+            buscarLocalizacao("CidadeQueNaoExiste123")
+        ).rejects.toThrow("Cidade não encontrada.");
+    });
+
+
+    test("entrada vazia retorna erro de validação", async () => {
+
+        await expect(
+            buscarLocalizacao("")
+        ).rejects.toThrow("Digite o nome de uma cidade.");
+
+        expect(fetch).not.toHaveBeenCalled();
+    });
+
+});
+
 
 describe("buscarPrevisao", () => {
 
@@ -18,7 +96,7 @@ describe("buscarPrevisao", () => {
     });
 
 
-    test("nome de cidade válido retorna dados meteorológicos", async () => {
+    test("retorna dados meteorológicos corretamente", async () => {
 
         fetch.mockResolvedValue({
             ok: true,
@@ -35,7 +113,10 @@ describe("buscarPrevisao", () => {
             })
         });
 
-        const resultado = await buscarPrevisao(-23.5475, -46.63611);
+        const resultado = await buscarPrevisao(
+            -23.5475,
+            -46.63611
+        );
 
         expect(resultado).toBeDefined();
 
@@ -44,31 +125,8 @@ describe("buscarPrevisao", () => {
         expect(resultado.current_weather.temperature).toBe(24.5);
 
         expect(fetch).toHaveBeenCalledTimes(1);
-
     });
 
-    test("nome de cidade inexistente lança exceção", async () => {
-
-        fetch.mockResolvedValue({
-            ok: true,
-            json: async () => ({
-                results: []
-            })
-        });
-
-        await expect(
-            buscarLocalizacao("CidadeQueNaoExiste123")
-        ).rejects.toThrow("Cidade não encontrada.");
-    });
-    
-    test("entrada vazia retorna erro de validação", async () => {
-
-        await expect(
-            buscarLocalizacao("")
-        ).rejects.toThrow("Digite o nome de uma cidade.");
-
-        expect(fetch).not.toHaveBeenCalled();
-    });
 
     test("falha da API lança uma exceção", async () => {
 
@@ -82,7 +140,7 @@ describe("buscarPrevisao", () => {
         ).rejects.toThrow("Erro ao consultar a API.");
     });
 
-    // Teste simula 429 - too many requests
+
     test("limite de requisições da API lança erro adequado", async () => {
 
         fetch.mockResolvedValue({
@@ -95,6 +153,7 @@ describe("buscarPrevisao", () => {
         ).rejects.toThrow("Limite de requisições excedido.");
     });
 
+
     test("falha de conexão de rede lança erro adequado", async () => {
 
         fetch.mockRejectedValue(
@@ -105,6 +164,7 @@ describe("buscarPrevisao", () => {
             buscarPrevisao(-23.5475, -46.63611)
         ).rejects.toThrow("Falha na conexão com a API.");
     });
+
 
     test("formato inesperado da resposta JSON lança erro adequado", async () => {
 
