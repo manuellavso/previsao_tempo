@@ -239,7 +239,11 @@ async function buscarPrevisao(latitude, longitude) {
     const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=relative_humidity_2m,precipitation,visibility,pressure_msl&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=5`;
 
+    try{
     const resposta = await fetch(url);
+        if (!resposta.ok) {
+            throw new Error("Erro ao consultar previsão de tempo.");
+        }
 
     const dados = await resposta.json();
 
@@ -296,6 +300,17 @@ async function buscarPrevisao(latitude, longitude) {
     // Mostra a tela de previsão
     telaPesquisa.style.display = "none";
     telaPrevisao.style.display = "block";
+
+    }catch(erro){
+        console.error(erro);
+
+        mensagemErro.textContent = "Não foi possível consultar a previsão. Tente novamente.";
+
+        mensagemErro.style.display= "block";
+
+        telaPrevisao.style.display = "none";
+        telaPesquisa.style.display = "flex";
+    }
 }
 
 

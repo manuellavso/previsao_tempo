@@ -597,6 +597,18 @@ body.modo-noite .forecast-card small {
     font-weight: 700;
 }
 
+.privacy-message {
+    margin-top: var(--spacing-md);
+    color: var(--gray-400);
+    font-size: var(--text-sm) !important;
+    line-height: 1.5;
+    text-align: center;
+}
+
+body.modo-noite .privacy-message {
+    color: var(--darkblue-50);
+}
+
 /* Responsividade tablet e celular */
 @media (max-width: 1024px) {
 
@@ -644,7 +656,6 @@ body.modo-noite .forecast-card small {
         padding: var(--spacing-md);
     }
         
-    }
 
     /* PESQUISA */
 
